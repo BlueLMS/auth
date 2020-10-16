@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql
+    ports:
+      - "3306:3306"
+    env_file:
+      - .env.example
+
+  adminer:
+    image: adminer
+    ports:
+      - 8081:8080
+    restart: always
+
+  auth:
+    build: .
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env.example
